@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxorvue - Premier Global Service Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0b3d91;
+            --secondary: #c6953f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gradient: linear-gradient(135deg, #0b3d91 0%, #1a73e8 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--secondary);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 30px;
+        }
+        
+        .nav-link {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Intro Section */
+        .intro {
+            padding: 100px 0;
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+        }
+        
+        .intro h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .intro p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--dark);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .section-header p {
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #6c757d;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            font-size: 50px;
+            color: white;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-content p {
+            font-size: 15px;
+            margin-bottom: 20px;
+            color: #6c757d;
+        }
+        
+        /* Budget Section */
+        .budget {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .budget-table th, .budget-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .budget-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .budget-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .budget-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .budget-total {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .contact h2 {
+            color: white;
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .contact a {
+            color: white;
+        }
+        
+        .contact a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 30px 0;
+            background-color: #0a2a56;
+            color: white;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                padding: 30px;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 30px;
+            }
+            
+            .intro h2 {
+                font-size: 32px;
+            }
+            
+            .intro p {
+                font-size: 16px;
+            }
+            
+            .services-grid, .contact-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <h1>Luxorvue</h1>
+                </div>
+                <nav class="navbar">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="#intro" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="#budget" class="nav-link">Budget</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <div class="mobile-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Video -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/KCyJPitgoo0?autoplay=1&mute=1&controls=1&rel=0&showinfo=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro">
+        <div class="container">
+            <h2 class="fade-in-up">Turning Global Dreams into Reality</h2>
+            <p class="fade-in-up">Luxorvue is a premier global service agency dedicated to providing seamless travel experiences, world-class educational opportunities, lucrative employment prospects, and boundless creative opportunities across the globe. With our expert team and established networks, we bridge the gap between your aspirations and international possibilities.</p>
+            <a href="#services" class="btn fade-in-up">Discover Our Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Our Core Services</h2>
+                <p>Luxorvue offers a comprehensive suite of services designed to make your global journey smooth and successful.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Travel Services</h3>
+                        <p>Our travel experts provide comprehensive visa facilitation, flight and accommodation bookings, and personalized travel support tailored to your specific needs and preferences. We handle all the complexities of international travel so you can focus on your journey.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Educational Opportunities</h3>
+                        <p>Eligible students who have completed O or A levels, hold a diploma, or have a degree can study at Siam Technology College—one of Thailand's top universities—for just $2,500 per semester. Our education specialists will guide you through the application and enrollment process.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Employment Assistance</h3>
+                        <p>Kickstart your career in Thailand with our job placement service for just $500. Our employment consultants match your skills and qualifications with suitable opportunities, assist with work permits, and provide ongoing support to ensure a smooth transition into your new role.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section id="budget" class="budget">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Cost Breakdown & Budget Planning</h2>
+                <p>We believe in transparent pricing. Here's a comprehensive breakdown of expenses you can expect when using our services.</p>
+            </div>
+            <table class="budget-table fade-in-up">
+                <thead>
+                    <tr>
+                        <th>Service/Expense</th>
+                        <th>Details</th>
+                        <th>Estimated Cost (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Visa Service Fee</td>
+                        <td>Complete visa processing and documentation</td>
+                        <td>$500 per person</td>
+                    </tr>
+                    <tr>
+                        <td>Police Clearance</td>
+                        <td>Required documentation for visa application</td>
+                        <td>$30</td>
+                    </tr>
+                    <tr>
+                        <td>Round-trip Economy Flight</td>
+                        <td>International airfare</td>
+                        <td>$800</td>
+                    </tr>
+                    <tr>
+                        <td>Accommodation (Ayutthaya area)</td>
+                        <td>Monthly rent plus two-month deposit</td>
+                        <td>$260 + deposit</td>
+                    </tr>
+                    <tr>
+                        <td>Utility Costs</td>
+                        <td>Estimated monthly expenses</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td>Airport Pickup Service</td>
+                        <td>From Suvarnabhumi Airport to Ayutthaya</td>
+                        <td>$70</td>
+                    </tr>
+                    <tr>
+                        <td>Document Handling (DHL)</td>
+                        <td>Secure document delivery services</td>
+                        <td>Not exceeding $200</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="budget-total">Total Estimated Expenses</td>
+                        <td class="budget-total">Approximately $2,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Get in Touch</h2>
+                <p>Ready to begin your global journey? Contact our team of experts today.</p>
+            </div>
+            <div class="contact-cards">
+                <div class="contact-card fade-in-up">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p class="contact-info">
+                        <a href="mailto:66502641006@siamtechno.ac.th">66502641006@siamtechno.ac.th</a>
+                    </p>
+                </div>
+                <div class="contact-card fade-in-up">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p class="contact-info">
+                        <a href="tel:+66933375097">+66 933-375-097</a>
+                    </p>
+                </div>
+                <div class="contact-card fade-in-up">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Website</h3>
+                    <p class="contact-info">
+                        <a href="https://luxorvue.com" target="_blank">Luxorvue.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Luxorvue. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.querySelector('i').classList.toggle('fa-bars');
+            mobileToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.toggle('fa-bars');
+                    mobileToggle.querySelector('i').classList.toggle('fa-times');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Fade In Animation on Scroll
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 50) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial styles for animation
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        // Initial check and scroll event
+        window.addEventListener('load', revealOnScroll);
+        window.addEventListener('scroll', revealOnScroll);
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
